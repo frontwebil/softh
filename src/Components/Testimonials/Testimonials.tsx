@@ -5,6 +5,7 @@ import "./style.css";
 import axios from "axios";
 import { Testimonial } from "@/generated/prisma/client";
 import { PiArrowUpRightBold } from "react-icons/pi";
+import Link from "next/link";
 
 export function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
@@ -87,10 +88,16 @@ export function Testimonials() {
             ))}
           </div>
         )}
-        <div className="testimonials-read-all">
+        <Link
+          href={
+            "https://www.google.com/search?sca_esv=b2331d7122fe79eb&sxsrf=APpeQnthqThmaTTfKPtniHwp2SZsXJlm5Q:1785626628790&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_yRO54IQa_h344GWdsDkGWxkDEh6A50HcRGpeNvkb52lC2BUw5O5O2LPvgS8wqOpXN_1joewRBeMwfqBLPPVXDXmAaIjGtkZmEnL4y341Hhwd4GXq8lTzX8jQAf0-rEElP6vydA%3D&q=%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F+SofthCTO+%D0%92%D1%96%D0%B4%D0%B3%D1%83%D0%BA%D0%B8&sa=X&ved=2ahUKEwiC-qPHyYCWAxV0FhAIHQDyJ28Q0bkNegQILBAH"
+          }
+          target="_blank"
+          className="testimonials-read-all"
+        >
           <p>Читати всі відгуки</p>
           <PiArrowUpRightBold />
-        </div>
+        </Link>
       </div>
     </section>
   );

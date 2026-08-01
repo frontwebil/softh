@@ -16,7 +16,6 @@ export type PriceCategory = {
   items: PriceItem[];
 };
 
-/** Категорії прайсу. Послуги та ціни додаються через адмінку. */
 export const PRICE_CATEGORIES: PriceCategory[] = [
   {
     id: "consultation",
@@ -28,69 +27,84 @@ export const PRICE_CATEGORIES: PriceCategory[] = [
     title: "Терапевтична та ендодонтична стоматологія",
     items: [],
   },
-  { id: "surgery", title: "Хірургічна стоматологія", items: [] },
-  { id: "orthodontics", title: "Ортодонтичне лікування", items: [] },
-  { id: "kids", title: "Дитяча стоматологія", items: [] },
+  {
+    id: "surgery",
+    title: "Хірургічна стоматологія",
+    items: [],
+  },
+  {
+    id: "orthodontics",
+    title: "Ортодонтичне лікування",
+    items: [],
+  },
+  {
+    id: "pediatric",
+    title: "Дитяча стоматологія",
+    items: [],
+  },
+  {
+    id: "prosthetics",
+    title: "Ортопедична стоматологія",
+    items: [],
+  },
 ];
 
-const newId = () => Math.random().toString(36).slice(2, 10);
+export function PricesEditor() {
+  const [loading, setLoading] = useState(false);
+  const [openId, setOpenId] = useState([""]);
+  const [services, setServices] = useState(PRICE_CATEGORIES);
 
-export function PricesEditor({
-  initialCategories = PRICE_CATEGORIES,
-}: {
-  initialCategories?: PriceCategory[];
-}) {
-  const [categories, setCategories] =
-    useState<PriceCategory[]>(initialCategories);
-  const [openId, setOpenId] = useState<string | null>(
-    initialCategories[0]?.id ?? null,
-  );
-  const [saving, setSaving] = useState(false);
-
-  const updateCategory = (
+  const handleChangeService = (
     categoryId: string,
-    updater: (category: PriceCategory) => PriceCategory,
-  ) =>
-    setCategories((prev) =>
-      prev.map((category) =>
-        category.id === categoryId ? updater(category) : category,
-      ),
-    );
-
-  const addItem = (categoryId: string) =>
-    updateCategory(categoryId, (category) => ({
-      ...category,
-      items: [...category.items, { id: newId(), name: "", price: "" }],
-    }));
-
-  const removeItem = (categoryId: string, itemId: string) =>
-    updateCategory(categoryId, (category) => ({
-      ...category,
-      items: category.items.filter((item) => item.id !== itemId),
-    }));
-
-  const changeItem = (
-    categoryId: string,
-    itemId: string,
+    serviceId: string,
     field: "name" | "price",
     value: string,
-  ) =>
-    updateCategory(categoryId, (category) => ({
-      ...category,
-      items: category.items.map((item) =>
-        item.id === itemId ? { ...item, [field]: value } : item,
+  ) => {
+    setServices((prev) =>
+      prev.map((category) =>
+        category.id === categoryId
+          ? {
+              ...category,
+              items: category.items.map((item) =>
+                item.id === serviceId ? { ...item, [field]: value } : item,
+              ),
+            }
+          : category,
       ),
-    }));
+    );
+  };
 
-  const handleSave = async () => {
-    setSaving(true);
-    try {
-      // TODO: підключити бекенд — POST /api/admin/prices з `categories`
-      await new Promise((resolve) => setTimeout(resolve, 400));
-      toast.success("Прайс збережено");
-    } finally {
-      setSaving(false);
-    }
+  const handleAddService = (id: string) => {
+    setServices((prev) =>
+      prev.map((category) =>
+        category.id === id
+          ? {
+              ...category,
+              items: [
+                ...category.items,
+                {
+                  id: crypto.randomUUID(),
+                  name: "",
+                  price: "",
+                },
+              ],
+            }
+          : category,
+      ),
+    );
+  };
+
+  const handleDeleteService = (categoryId: string, serviceId: string) => {
+    setServices((prev) =>
+      prev.map((category) =>
+        category.id === categoryId
+          ? {
+              ...category,
+              items: category.items.filter((item) => item.id !== serviceId),
+            }
+          : category,
+      ),
+    );
   };
 
   return (
@@ -102,8 +116,8 @@ export function PricesEditor({
       </div>
 
       <div className="admin-accordion">
-        {categories.map((category) => {
-          const open = openId === category.id;
+        {services.map((category) => {
+          const open = openId.includes(category.id);
 
           return (
             <div
@@ -113,7 +127,17 @@ export function PricesEditor({
               <button
                 type="button"
                 className="admin-cat-head"
-                onClick={() => setOpenId(open ? null : category.id)}
+                onClick={() => {
+                  if (openId.includes(category.id)) {
+                    const openIdFiltered = openId.filter(
+                      (el) => el !== category.id,
+                    );
+                    setOpenId(openIdFiltered);
+                    return;
+                  } else {
+                    setOpenId([...openId, category.id]);
+                  }
+                }}
               >
                 <span className="admin-cat-title">{category.title}</span>
                 <span className="admin-cat-count">
@@ -139,12 +163,12 @@ export function PricesEditor({
                         className="admin-input admin-input--service"
                         placeholder="Назва послуги"
                         value={item.name}
-                        onChange={(event) =>
-                          changeItem(
+                        onChange={(e) =>
+                          handleChangeService(
                             category.id,
                             item.id,
                             "name",
-                            event.target.value,
+                            e.target.value,
                           )
                         }
                       />
@@ -152,19 +176,21 @@ export function PricesEditor({
                         className="admin-input admin-input--price"
                         placeholder="500 грн"
                         value={item.price}
-                        onChange={(event) =>
-                          changeItem(
+                        onChange={(e) =>
+                          handleChangeService(
                             category.id,
                             item.id,
                             "price",
-                            event.target.value,
+                            e.target.value,
                           )
                         }
                       />
                       <button
                         type="button"
                         className="admin-btn admin-btn--danger admin-btn--sm"
-                        onClick={() => removeItem(category.id, item.id)}
+                        onClick={() =>
+                          handleDeleteService(category.id, item.id)
+                        }
                       >
                         Видалити
                       </button>
@@ -175,7 +201,7 @@ export function PricesEditor({
                     <button
                       type="button"
                       className="admin-btn admin-btn--secondary admin-btn--sm"
-                      onClick={() => addItem(category.id)}
+                      onClick={() => handleAddService(category.id)}
                     >
                       + Додати послугу
                     </button>
@@ -188,13 +214,8 @@ export function PricesEditor({
       </div>
 
       <div className="admin-save-bar">
-        <button
-          type="button"
-          className="admin-btn admin-btn--primary"
-          onClick={handleSave}
-          disabled={saving}
-        >
-          {saving ? "Зберігаю…" : "Зберегти зміни"}
+        <button type="button" className="admin-btn admin-btn--primary">
+          {loading ? "Зберігаю…" : "Зберегти зміни"}
         </button>
       </div>
     </>
