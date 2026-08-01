@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { signOut } from "next-auth/react";
+
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
@@ -18,11 +18,8 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="default-cursor">
-      Welcome to Admin Panel
-      <button onClick={() => signOut({ callbackUrl: "/admin/login" })}>
-        Logout
-      </button>
-    </div>
+    <main className="admin-home">
+
+    </main>
   );
 }
