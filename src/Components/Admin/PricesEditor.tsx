@@ -196,9 +196,6 @@ export function PricesEditor({
         >
           {saving ? "Зберігаю…" : "Зберегти зміни"}
         </button>
-        <span className="admin-hint">
-          Дані поки що зберігаються лише в стані компонента.
-        </span>
       </div>
     </>
   );

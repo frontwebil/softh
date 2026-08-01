@@ -104,6 +104,25 @@
   background: rgba(181, 84, 76, 0.06);
 }
 
+.admin-sidebar-bottom-link-to-site {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #D2CBAF;
+  color: #4a4630;
+  transition: all 0.2s ease;
+
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 100%;
+
+  cursor: pointer;
+}
+
 /* === Content === */
 .admin-content {
   flex: 1;
