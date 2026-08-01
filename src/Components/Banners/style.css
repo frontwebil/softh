@@ -1,0 +1,70 @@
+.comfort-banner {
+  position: relative;
+  padding: 100px 0;
+}
+
+.comfort-banner img {
+  object-fit: cover;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 3;
+}
+.banner-content-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.banner-content-top .line {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.banner-content-top-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 20%;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+.banner-content-top-text-logo {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 1);
+}
+
+.banner-content-top-text-logo span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.banner-title {
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 46px;
+  letter-spacing: -6%;
+  color: rgba(255, 255, 255, 1);
+  padding-top: 120px;
+  padding-bottom: 32px
+}
+.banner-text {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
+
+  color: #FFFFFF;
+  max-width: 536px;
+  width: 100%;
+
+  padding-bottom: 20px;
+}
