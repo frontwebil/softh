@@ -20,7 +20,7 @@ export function AdminSidebar() {
   return (
     <aside className="admin-sidebar">
       <Link href="/admin" className="admin-sidebar-logo">
-        Soft H
+        Softh
       </Link>
 
       <nav className="admin-sidebar-nav">

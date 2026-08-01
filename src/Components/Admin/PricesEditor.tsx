@@ -97,19 +97,8 @@ export function PricesEditor({
     <>
       <div className="admin-head">
         <div>
-          <h1 className="admin-title">Редагування цін</h1>
-          <p className="admin-subtitle">
-            5 категорій. Додавайте послуги та ціни всередині категорії.
-          </p>
+          <h1 className="admin-title">Редагування прайсу</h1>
         </div>
-        <button
-          type="button"
-          className="admin-btn admin-btn--primary"
-          onClick={handleSave}
-          disabled={saving}
-        >
-          {saving ? "Зберігаю…" : "Зберегти зміни"}
-        </button>
       </div>
 
       <div className="admin-accordion">

@@ -2,7 +2,6 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 
-/** Перевірка доступу до адмінки. Редіректить на /admin/login. */
 export async function requireAdmin() {
   const session = await getServerSession(authOptions);
 
