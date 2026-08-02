@@ -1,175 +1,277 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { toast } from "sonner";
-import { LuChevronDown } from "react-icons/lu";
+import { LuChevronDown, LuEye, LuEyeOff } from "react-icons/lu";
+import { Category, Service } from "@/generated/prisma/client";
+import { Loader } from "../Loader/Loader";
 
-export type PriceItem = {
+export type EditableService = {
   id: string;
-  name: string;
-  price: string;
-};
-
-export type PriceCategory = {
-  id: string;
+  category: Category;
   title: string;
-  items: PriceItem[];
+  price: string;
+  visible: boolean;
+  isNew?: boolean;
 };
 
-export const PRICE_CATEGORIES: PriceCategory[] = [
-  {
-    id: "consultation",
-    title: "Консультативно-діагностичні послуги",
-    items: [],
-  },
-  {
-    id: "therapy",
-    title: "Терапевтична та ендодонтична стоматологія",
-    items: [],
-  },
-  {
-    id: "surgery",
-    title: "Хірургічна стоматологія",
-    items: [],
-  },
-  {
-    id: "orthodontics",
-    title: "Ортодонтичне лікування",
-    items: [],
-  },
-  {
-    id: "pediatric",
-    title: "Дитяча стоматологія",
-    items: [],
-  },
-  {
-    id: "prosthetics",
-    title: "Ортопедична стоматологія",
-    items: [],
-  },
+export const PRICE_CATEGORIES: { id: Category; title: string }[] = [
+  { id: "consultation", title: "Консультативно-діагностичні послуги" },
+  { id: "therapy", title: "Терапевтична та ендодонтична стоматологія" },
+  { id: "surgery", title: "Хірургічна стоматологія" },
+  { id: "orthodontics", title: "Ортодонтичне лікування" },
+  { id: "pediatric", title: "Дитяча стоматологія" },
+  { id: "prosthetics", title: "Ортопедична стоматологія" },
 ];
 
-export function PricesEditor() {
+const toEditable = (service: Service): EditableService => ({
+  id: service.id,
+  category: service.category,
+  title: service.title,
+  price: service.price,
+  visible: service.visible,
+});
+
+export function PricesEditor({ Services }: { Services?: Service[] }) {
   const [loading, setLoading] = useState(false);
-  const [openId, setOpenId] = useState([""]);
-  const [services, setServices] = useState(PRICE_CATEGORIES);
+  const [openId, setOpenId] = useState<Category[]>([]);
+  const [services, setServices] = useState<EditableService[]>(
+    (Services ?? []).map(toEditable),
+  );
+
+  useEffect(() => {
+    if (Services) return;
+
+    axios
+      .get("/api/service/get-all?all=1")
+      .then(({ data }) => setServices((data.data as Service[]).map(toEditable)))
+      .catch((error) => {
+        console.error(error);
+        toast.error("Не вдалося завантажити прайс");
+      });
+  }, [Services]);
+
+  const byCategory = (category: Category) =>
+    services.filter((service) => service.category === category);
 
   const handleChangeService = (
-    categoryId: string,
-    serviceId: string,
-    field: "name" | "price",
+    id: string,
+    field: "title" | "price",
     value: string,
-  ) => {
+  ) =>
     setServices((prev) =>
-      prev.map((category) =>
-        category.id === categoryId
-          ? {
-              ...category,
-              items: category.items.map((item) =>
-                item.id === serviceId ? { ...item, [field]: value } : item,
-              ),
-            }
-          : category,
+      prev.map((service) =>
+        service.id === id ? { ...service, [field]: value } : service,
       ),
     );
+
+  const handleAddService = (category: Category) =>
+    setServices((prev) => [
+      ...prev,
+      {
+        id: crypto.randomUUID(),
+        category,
+        title: "",
+        price: "",
+        visible: true,
+        isNew: true,
+      },
+    ]);
+
+  const handleDeleteService = async (service: EditableService) => {
+    if (!service.isNew) {
+      try {
+        await axios.delete(`/api/service/${service.id}`);
+      } catch (error) {
+        console.error(error);
+        toast.error("Не вдалося видалити послугу");
+        return;
+      }
+    }
+
+    setServices((prev) => prev.filter((item) => item.id !== service.id));
+    toast.success("Послугу видалено");
   };
 
-  const handleAddService = (id: string) => {
+  /** Око послуги — одразу PUT на сервер */
+  const handleToggleService = async (service: EditableService) => {
+    const visible = !service.visible;
+
     setServices((prev) =>
-      prev.map((category) =>
-        category.id === id
-          ? {
-              ...category,
-              items: [
-                ...category.items,
-                {
-                  id: crypto.randomUUID(),
-                  name: "",
-                  price: "",
-                },
-              ],
-            }
-          : category,
+      prev.map((item) =>
+        item.id === service.id ? { ...item, visible } : item,
       ),
     );
+
+    if (service.isNew) return;
+
+    try {
+      await axios.put(`/api/service/${service.id}`, { visible });
+    } catch (error) {
+      console.error(error);
+      toast.error("Не вдалося змінити видимість");
+      setServices((prev) =>
+        prev.map((item) =>
+          item.id === service.id ? { ...item, visible: service.visible } : item,
+        ),
+      );
+    }
   };
 
-  const handleDeleteService = (categoryId: string, serviceId: string) => {
+  /** Око категорії — ховає/показує всі послуги категорії */
+  const handleToggleCategory = async (category: Category, visible: boolean) => {
     setServices((prev) =>
-      prev.map((category) =>
-        category.id === categoryId
-          ? {
-              ...category,
-              items: category.items.filter((item) => item.id !== serviceId),
-            }
-          : category,
+      prev.map((service) =>
+        service.category === category ? { ...service, visible } : service,
       ),
     );
+
+    try {
+      await axios.put(`/api/service/category/${category}`, { visible });
+    } catch (error) {
+      console.error(error);
+      toast.error("Не вдалося змінити видимість категорії");
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (loading) return;
+
+    setLoading(true);
+
+    try {
+      const { data } = await axios.put("/api/service/update", {
+        services: services.map((service) => ({
+          id: service.isNew ? undefined : service.id,
+          category: service.category,
+          title: service.title,
+          price: service.price,
+          visible: service.visible,
+        })),
+      });
+
+      setServices((data.data as Service[]).map(toEditable));
+      toast.success("Зміни успішно збережено");
+    } catch (error) {
+      console.error(error);
+      toast.error("Помилка при збереженні");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
+      {loading && <Loader />}
+
       <div className="admin-head">
         <div>
           <h1 className="admin-title">Редагування прайсу</h1>
+          <p className="admin-subtitle">
+            Око — показувати чи ховати послугу на сайті.
+          </p>
         </div>
+        <button
+          type="button"
+          className="admin-btn admin-btn--primary"
+          disabled={loading}
+          onClick={handleSubmit}
+        >
+          {loading ? "Зберігаю…" : "Зберегти зміни"}
+        </button>
       </div>
 
       <div className="admin-accordion">
-        {services.map((category) => {
+        {PRICE_CATEGORIES.map((category) => {
           const open = openId.includes(category.id);
+          const items = byCategory(category.id);
+          const categoryVisible =
+            items.length > 0 && items.some((item) => item.visible);
 
           return (
             <div
               key={category.id}
-              className={`admin-cat${open ? " open" : ""}`}
+              className={`admin-cat${open ? " open" : ""}${
+                items.length > 0 && !categoryVisible ? " hidden-row" : ""
+              }`}
             >
-              <button
-                type="button"
-                className="admin-cat-head"
-                onClick={() => {
-                  if (openId.includes(category.id)) {
-                    const openIdFiltered = openId.filter(
-                      (el) => el !== category.id,
-                    );
-                    setOpenId(openIdFiltered);
-                    return;
-                  } else {
-                    setOpenId([...openId, category.id]);
+              <div className="admin-cat-head">
+                <button
+                  type="button"
+                  className="admin-eye"
+                  title={
+                    categoryVisible
+                      ? "Приховати всю категорію"
+                      : "Показати всю категорію"
                   }
-                }}
-              >
-                <span className="admin-cat-title">{category.title}</span>
-                <span className="admin-cat-count">
-                  {category.items.length} послуг
-                </span>
-                <LuChevronDown className="admin-cat-chevron" size={18} />
-              </button>
+                  aria-label="Видимість категорії"
+                  disabled={items.length === 0}
+                  onClick={() =>
+                    handleToggleCategory(category.id, !categoryVisible)
+                  }
+                >
+                  {categoryVisible ? <LuEye size={17} /> : <LuEyeOff size={17} />}
+                </button>
+
+                <button
+                  type="button"
+                  className="admin-cat-main"
+                  onClick={() =>
+                    setOpenId((prev) =>
+                      prev.includes(category.id)
+                        ? prev.filter((id) => id !== category.id)
+                        : [...prev, category.id],
+                    )
+                  }
+                >
+                  <span className="admin-cat-title">{category.title}</span>
+                  <span className="admin-cat-count">
+                    {items.length} послуг
+                  </span>
+                  <LuChevronDown className="admin-cat-chevron" size={18} />
+                </button>
+              </div>
 
               {open && (
                 <div className="admin-cat-body">
-                  {category.items.length === 0 && (
+                  {items.length === 0 && (
                     <p className="admin-empty">
                       Послуг ще немає — додайте першу.
                     </p>
                   )}
 
-                  {category.items.map((item, index) => (
-                    <div key={item.id} className="admin-row">
+                  {items.map((item, index) => (
+                    <div
+                      key={item.id}
+                      className={`admin-row${item.visible ? "" : " hidden-row"}`}
+                    >
                       <span className="admin-row-index">
                         ({String(index + 1).padStart(2, "0")})
                       </span>
+                      <button
+                        type="button"
+                        className="admin-eye"
+                        title={
+                          item.visible
+                            ? "Видима на сайті"
+                            : "Прихована на сайті"
+                        }
+                        aria-label="Видимість послуги"
+                        onClick={() => handleToggleService(item)}
+                      >
+                        {item.visible ? (
+                          <LuEye size={16} />
+                        ) : (
+                          <LuEyeOff size={16} />
+                        )}
+                      </button>
                       <input
                         className="admin-input admin-input--service"
                         placeholder="Назва послуги"
-                        value={item.name}
+                        value={item.title}
                         onChange={(e) =>
-                          handleChangeService(
-                            category.id,
-                            item.id,
-                            "name",
-                            e.target.value,
-                          )
+                          handleChangeService(item.id, "title", e.target.value)
                         }
                       />
                       <input
@@ -177,20 +279,13 @@ export function PricesEditor() {
                         placeholder="500 грн"
                         value={item.price}
                         onChange={(e) =>
-                          handleChangeService(
-                            category.id,
-                            item.id,
-                            "price",
-                            e.target.value,
-                          )
+                          handleChangeService(item.id, "price", e.target.value)
                         }
                       />
                       <button
                         type="button"
                         className="admin-btn admin-btn--danger admin-btn--sm"
-                        onClick={() =>
-                          handleDeleteService(category.id, item.id)
-                        }
+                        onClick={() => handleDeleteService(item)}
                       >
                         Видалити
                       </button>
@@ -214,9 +309,17 @@ export function PricesEditor() {
       </div>
 
       <div className="admin-save-bar">
-        <button type="button" className="admin-btn admin-btn--primary">
+        <button
+          type="button"
+          className="admin-btn admin-btn--primary"
+          disabled={loading}
+          onClick={handleSubmit}
+        >
           {loading ? "Зберігаю…" : "Зберегти зміни"}
         </button>
+        <span className="admin-hint">
+          «Зберегти» відправляє весь прайс одним PUT-запитом.
+        </span>
       </div>
     </>
   );

@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 
 export default async function AdminTestimonialsPage() {
   await requireAdmin();
-  const Testimonials = await prisma.testimonial.findMany();
+  const Testimonials = await prisma.testimonial.findMany({ orderBy: { order: "asc" } });
 
   return (
     <div className="admin-page default-cursor">

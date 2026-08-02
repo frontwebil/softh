@@ -447,3 +447,70 @@
     width: 110px;
   }
 }
+
+/* === Видимість / око === */
+.admin-head-actions,
+.admin-card-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-cat-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+}
+
+.admin-cat-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.admin-eye {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--a-border);
+  background: #fff;
+  color: var(--a-accent);
+  transition: all 0.2s ease;
+}
+
+.admin-eye:hover {
+  background: var(--a-accent-soft);
+}
+
+.admin-eye:disabled {
+  opacity: 0.45;
+}
+
+.hidden-row > .admin-cat-head > .admin-eye,
+.admin-row.hidden-row .admin-eye,
+.admin-card.hidden-row .admin-eye {
+  color: var(--a-muted);
+  background: var(--a-bg);
+}
+
+.hidden-row .admin-cat-title,
+.admin-row.hidden-row .admin-input,
+.admin-card.hidden-row .admin-input,
+.admin-card.hidden-row .admin-card-label {
+  opacity: 0.55;
+}
+
+.admin-card.hidden-row,
+.admin-cat.hidden-row {
+  border-style: dashed;
+}
