@@ -7,6 +7,27 @@ datasource db {
   provider = "postgresql"
 }
 
+model Service {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  category  Category
+  title     String
+  price     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  category  String
+  text      String
+  date      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum Category {
   consultation
   therapy
@@ -14,30 +35,4 @@ enum Category {
   orthodontics
   pediatric
   prosthetics
-}
-
-model Service {
-  id        String        @id @default(cuid())
-  order Int @default(0)
-  category Category
-  title String
-  price String
-
-  visible Boolean
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
-}
-
-model Testimonial {
-  id          String   @id @default(cuid())
-
-  name        String
-  category    String
-  text        String   @db.Text
-  date        String
-  order       Int      @default(0)
-  visible     Boolean  @default(true)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
 }
