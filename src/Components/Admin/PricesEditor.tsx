@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { LuChevronDown, LuEye, LuEyeOff } from "react-icons/lu";
+import {
+  LuChevronDown,
+  LuChevronUp,
+  LuEye,
+  LuEyeOff,
+} from "react-icons/lu";
 import { Category, Service } from "@/generated/prisma/client";
 import { Loader } from "../Loader/Loader";
 
@@ -78,6 +83,27 @@ export function PricesEditor({ Services }: { Services?: Service[] }) {
         isNew: true,
       },
     ]);
+
+  /** Змінити порядок послуги всередині категорії (↑ / ↓) */
+  const handleMoveService = (service: EditableService, direction: -1 | 1) =>
+    setServices((prev) => {
+      const sameCategory = prev.filter(
+        (item) => item.category === service.category,
+      );
+      const position = sameCategory.findIndex(
+        (item) => item.id === service.id,
+      );
+      const target = sameCategory[position + direction];
+
+      if (!target) return prev;
+
+      const next = [...prev];
+      const from = next.findIndex((item) => item.id === service.id);
+      const to = next.findIndex((item) => item.id === target.id);
+      [next[from], next[to]] = [next[to], next[from]];
+
+      return next;
+    });
 
   const handleDeleteService = async (service: EditableService) => {
     if (!service.isNew) {
@@ -169,17 +195,9 @@ export function PricesEditor({ Services }: { Services?: Service[] }) {
         <div>
           <h1 className="admin-title">Редагування прайсу</h1>
           <p className="admin-subtitle">
-            Око — показувати чи ховати послугу на сайті.
+            Око — показувати чи ховати послугу, стрілки — порядок.
           </p>
         </div>
-        <button
-          type="button"
-          className="admin-btn admin-btn--primary"
-          disabled={loading}
-          onClick={handleSubmit}
-        >
-          {loading ? "Зберігаю…" : "Зберегти зміни"}
-        </button>
       </div>
 
       <div className="admin-accordion">
@@ -249,6 +267,28 @@ export function PricesEditor({ Services }: { Services?: Service[] }) {
                       <span className="admin-row-index">
                         ({String(index + 1).padStart(2, "0")})
                       </span>
+                      <div className="admin-order">
+                        <button
+                          type="button"
+                          className="admin-order-btn"
+                          title="Вище"
+                          aria-label="Підняти вище"
+                          disabled={index === 0}
+                          onClick={() => handleMoveService(item, -1)}
+                        >
+                          <LuChevronUp size={14} />
+                        </button>
+                        <button
+                          type="button"
+                          className="admin-order-btn"
+                          title="Нижче"
+                          aria-label="Опустити нижче"
+                          disabled={index === items.length - 1}
+                          onClick={() => handleMoveService(item, 1)}
+                        >
+                          <LuChevronDown size={14} />
+                        </button>
+                      </div>
                       <button
                         type="button"
                         className="admin-eye"
@@ -317,9 +357,6 @@ export function PricesEditor({ Services }: { Services?: Service[] }) {
         >
           {loading ? "Зберігаю…" : "Зберегти зміни"}
         </button>
-        <span className="admin-hint">
-          «Зберегти» відправляє весь прайс одним PUT-запитом.
-        </span>
       </div>
     </>
   );
