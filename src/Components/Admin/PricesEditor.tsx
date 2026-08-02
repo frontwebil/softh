@@ -340,6 +340,11 @@ export function PricesEditor({ Services }: { Services?: Service[] }) {
                     >
                       + Додати послугу
                     </button>
+                    <span className="admin-hint">
+                      Символ <code>|</code> у назві = перенос на новий рядок.
+                      Напр.: «Ендодонтичне лікування кореневого каналу | (1
+                      канал)»
+                    </span>
                   </div>
                 </div>
               )}

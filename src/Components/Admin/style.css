@@ -320,9 +320,20 @@
 
 .admin-cat-actions {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   padding-left: 44px;
   margin-top: 4px;
+}
+
+.admin-hint code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--a-accent-soft);
+  color: var(--a-text);
+  font-family: inherit;
+  font-weight: 600;
 }
 
 /* === Testimonials === */
