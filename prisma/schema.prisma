@@ -13,6 +13,7 @@ model Service {
   category  Category
   title     String
   price     String
+  visible   Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
