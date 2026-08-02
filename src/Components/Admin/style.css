@@ -514,3 +514,42 @@
 .admin-cat.hidden-row {
   border-style: dashed;
 }
+
+/* === Порядок (стрілки) === */
+.admin-order {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.admin-order-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid var(--a-border);
+  background: #fff;
+  color: var(--a-muted);
+  transition: all 0.2s ease;
+}
+
+.admin-order-btn:first-child {
+  border-radius: 6px 6px 0 0;
+  border-bottom: none;
+}
+
+.admin-order-btn:last-child {
+  border-radius: 0 0 6px 6px;
+}
+
+.admin-order-btn:hover:not(:disabled) {
+  background: var(--a-accent-soft);
+  color: var(--a-text);
+}
+
+.admin-order-btn:disabled {
+  opacity: 0.35;
+}
