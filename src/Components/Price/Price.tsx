@@ -46,6 +46,18 @@ const PRICE_SECTIONS = [
   },
 ] as const;
 
+/** «|» у назві послуги = перенос на новий рядок */
+function renderTitle(title: string) {
+  const lines = title.split("|").map((line) => line.trim());
+
+  return lines.map((line, index) => (
+    <span key={index}>
+      {index > 0 && <br />}
+      {line}
+    </span>
+  ));
+}
+
 type GroupedServices = {
   consultation: Service[];
   therapy: Service[];
@@ -93,8 +105,6 @@ export function Price() {
 
     fetchTestimonials();
   }, []);
-
-  console.log(services);
 
   return (
     <section className="price">
@@ -151,7 +161,7 @@ export function Price() {
                       <div className="price-left-card-content-card" key={el.id}>
                         <div className="price-left-card-content-left">
                           <p>( {el.order + 1} )</p>
-                          <h4>{el.title}</h4>
+                          <h4>{renderTitle(el.title)}</h4>
                         </div>
 
                         <div className="price-left-card-content-line" />
