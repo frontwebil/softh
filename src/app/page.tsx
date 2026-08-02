@@ -17,8 +17,8 @@ export default function Home() {
       <Request />
       <Services />
       <AboutBanner />
-      <ComfortBanner />
       <Price/>
+      <ComfortBanner />
       <Testimonials />
     </>
   );

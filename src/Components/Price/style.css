@@ -1,0 +1,206 @@
+.price {
+  padding: 100px 0;
+  margin: 60px 0;
+}
+.price .container {
+  padding: 0 0 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.price-left {
+  max-width: 650px;
+  width: 100%;
+}
+
+.price-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding-bottom: 64px;
+}
+.price-top .line {
+  background-color: rgba(173, 153, 128, 1);
+}
+
+.price-top p {
+  color: rgba(173, 153, 128, 1);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 20%;
+  text-transform: uppercase;
+}
+
+.price-left-text {
+}
+.price-left-text-title {
+  font-family: Inter;
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 46px;
+  letter-spacing: -6%;
+  color: #1c1a17;
+  padding-bottom: 24px;
+}
+
+.price-left-text-title span {
+  font-style: italic;
+}
+.price-left-text-description {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
+
+  color: #8a8278;
+  max-width: 430px;
+  margin-bottom: 100px;
+}
+.price-left-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  max-width: 650px;
+  width: 100%;
+}
+.price-left-card {
+  max-width: 100%;
+  width: 100%;
+}
+.price-left-card-top {
+  background: #ede9e3;
+  padding: 16px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 100%;
+  width: 100%;
+}
+.price-left-card-top-left svg {
+  color: rgba(138, 130, 120, 0.5);
+}
+.price-left-card-top-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  max-width: 100%;
+  width: 100%;
+}
+
+.price-left-card-top-left p {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+
+  color: rgba(28, 26, 23, 1);
+}
+
+.price-main-img {
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px 0 0 20px;
+  aspect-ratio: 3 / 4;
+}
+
+.price-left-card-top-right-icon {
+  color: rgba(138, 130, 120, 1);
+  width: 20px;
+  height: 20px;
+}
+
+.price-left-card-content-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.price-left-card-content-left {
+  align-items: center;
+    width: max-content;
+  max-width: 350px;
+  display: flex;
+  gap: 12px;
+}
+
+.price-left-card-content-left h4 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: -2%;
+  color: rgba(28, 26, 23, 1);
+  width: max-content;
+}
+.price-left-card-content-left p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -2%;
+  color: rgba(117, 98, 75, 1);
+}
+
+.price-left-card-content-line {
+  border-top: 1px dashed rgba(138, 130, 120, 1);
+  flex: 1;
+  height: 50%;
+  margin-top: 2px;
+}
+.price-left-card-content-price {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: -2%;
+  text-align: right;
+  color: rgba(28, 26, 23, 1);
+}
+
+.price-left-card-top-right-icon {
+  transition: transform 0.3s;
+}
+
+.price-left-card-top-right-icon.active {
+  transform: rotate(180deg);
+}
+
+.price-left-card-content {
+  background: #ede9e3;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  overflow: hidden;
+
+  max-height: 0;
+  opacity: 0;
+
+  padding: 0 20px; /* горизонтальний padding залишаємо */
+  margin-top: 0;
+
+  transition:
+    max-height 0.45s ease,
+    opacity 0.25s ease,
+    margin-top 0.35s ease,
+    padding-top 0.35s ease,
+    padding-bottom 0.35s ease;
+}
+
+.price-left-card-content.open {
+  max-height: 1000px; /* або більше */
+  opacity: 1;
+
+  margin-top: 12px;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
+}

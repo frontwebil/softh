@@ -49,7 +49,7 @@ export function Request() {
         <Image
           src={"/Request/main-img.webp"}
           width={1000}
-          height={1000}
+          height={8000}
           alt="Фото кабінету"
           className="request-main-img"
         />
