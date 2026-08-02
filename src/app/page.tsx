@@ -1,7 +1,9 @@
 import { Advantages } from "@/Components/Advantages/Advantages";
+import { AboutBanner} from "@/Components/Banners/AboutBanner";
 import { ComfortBanner } from "@/Components/Banners/ComfortBanner";
 import { Header } from "@/Components/Header/Header";
 import { Hero } from "@/Components/Hero/Hero";
+import { Price } from "@/Components/Price/Price";
 import { Request } from "@/Components/Request/Request";
 import { Services } from "@/Components/Services/Services";
 import { Testimonials } from "@/Components/Testimonials/Testimonials";
@@ -14,7 +16,9 @@ export default function Home() {
       <Advantages />
       <Request />
       <Services />
+      <AboutBanner />
       <ComfortBanner />
+      <Price/>
       <Testimonials />
     </>
   );

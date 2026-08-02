@@ -24,8 +24,6 @@ export function Testimonials() {
     fetchTestimonials();
   }, []);
 
-  console.log(testimonials);
-
   return (
     <section className="testimonials">
       <div className="container">
@@ -49,7 +47,7 @@ export function Testimonials() {
               <img src="/Testimonials/star.svg" alt="star" />
             </div>
             <p className="testimonials-top-right-based">
-              Based on verified Google reviews
+              На основі перевірених відгуків у Google
             </p>
           </div>
         </div>

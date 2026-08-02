@@ -54,7 +54,7 @@
   letter-spacing: -6%;
   color: rgba(255, 255, 255, 1);
   padding-top: 120px;
-  padding-bottom: 32px
+  padding-bottom: 32px;
 }
 .banner-text {
   font-weight: 300;
@@ -62,9 +62,36 @@
   line-height: 24px;
   letter-spacing: -2%;
 
-  color: #FFFFFF;
+  color: #ffffff;
   max-width: 536px;
   width: 100%;
 
   padding-bottom: 20px;
+}
+
+.banner-cards {
+  margin-top: 72px;
+  max-width: 424px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.banner-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-card img{
+  width: 20px;
+  height: 20px;
+}
+
+.banner-card p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, 1);
 }

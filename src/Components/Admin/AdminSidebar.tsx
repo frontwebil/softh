@@ -37,8 +37,10 @@ export function AdminSidebar() {
       </nav>
 
       <div className="admin-sidebar-bottom">
-        <Link href={"/"}
+        <Link
+          href={"/"}
           type="button"
+          target="_blank"
           className="admin-sidebar-bottom-link-to-site"
         >
           На сайт
