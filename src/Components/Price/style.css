@@ -123,13 +123,18 @@
   justify-content: space-between;
   align-items: center;
   gap: 15px;
+  position: relative;
 }
 .price-left-card-content-left {
+  position: relative;
+  z-index: 2;
   align-items: center;
-    width: max-content;
-  max-width: 350px;
+  max-width: 440px;
+  width: max-content;
   display: flex;
   gap: 12px;
+  background: #ede9e3;
+  padding-right: 10px;
 }
 
 .price-left-card-content-left h4 {
@@ -138,9 +143,9 @@
   line-height: 16px;
   letter-spacing: -2%;
   color: rgba(28, 26, 23, 1);
-  width: max-content;
 }
 .price-left-card-content-left p {
+  width: 30px;
   font-weight: 300;
   font-size: 14px;
   line-height: 14px;
@@ -152,7 +157,10 @@
   border-top: 1px dashed rgba(138, 130, 120, 1);
   flex: 1;
   height: 50%;
-  margin-top: 2px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
 }
 .price-left-card-content-price {
   font-weight: 400;
@@ -161,6 +169,12 @@
   letter-spacing: -2%;
   text-align: right;
   color: rgba(28, 26, 23, 1);
+
+  position: relative;
+  z-index: 2;
+  background: #ede9e3;
+  width: max-content;
+  padding-left: 10px;
 }
 
 .price-left-card-top-right-icon {
