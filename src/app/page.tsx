@@ -6,6 +6,7 @@ import { Hero } from "@/Components/Hero/Hero";
 import { Price } from "@/Components/Price/Price";
 import { Request } from "@/Components/Request/Request";
 import { Services } from "@/Components/Services/Services";
+import { Steps } from "@/Components/Steps/Steps";
 import { Testimonials } from "@/Components/Testimonials/Testimonials";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <AboutBanner />
       <Price/>
       <ComfortBanner />
+      <Steps/>
       <Testimonials />
     </>
   );
