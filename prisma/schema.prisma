@@ -37,3 +37,13 @@ enum Category {
   pediatric
   prosthetics
 }
+
+model Lead {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+
+  name       String
+  phone      String
+  message    String?
+  contactWay String
+}
