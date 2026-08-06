@@ -25,7 +25,7 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="testimonials">
+    <section className="testimonials" id="testimonials">
       <div className="container">
         <div className="testimonials-top">
           <div className="testimonials-top-left">

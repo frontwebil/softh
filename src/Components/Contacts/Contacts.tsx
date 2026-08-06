@@ -3,7 +3,12 @@
 import Link from "next/link";
 import "./style.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  APPOINTMENT_EVENT,
+  APPOINTMENT_FORM_ID,
+  type AppointmentRequestDetail,
+} from "@/lib/appointment";
 import axios from "axios";
 
 export function Contacts() {
@@ -13,6 +18,28 @@ export function Contacts() {
     message: "",
     contactWay: "phoneCall",
   });
+
+  const messageRef = useRef<HTMLTextAreaElement | null>(null);
+
+  /** CTA-кнопки з інших секцій: підставити запит і сфокусувати поле */
+  useEffect(() => {
+    const handleRequest = (event: Event) => {
+      const { message } =
+        (event as CustomEvent<AppointmentRequestDetail>).detail ?? {};
+
+      if (message) {
+        setData((prev) => ({ ...prev, message }));
+      }
+
+      window.setTimeout(() => {
+        messageRef.current?.focus({ preventScroll: true });
+      }, 600);
+    };
+
+    window.addEventListener(APPOINTMENT_EVENT, handleRequest);
+
+    return () => window.removeEventListener(APPOINTMENT_EVENT, handleRequest);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -41,7 +68,7 @@ export function Contacts() {
   };
 
   return (
-    <section className="contacts">
+    <section className="contacts" id="contacts">
       <div className="container">
         <div className="contacts-top">
           <div className="contacts-top-left">
@@ -168,7 +195,11 @@ export function Contacts() {
               </Link>
             </div>
           </div>
-          <form className="appointment-form" onSubmit={handleSubmit}>
+          <form
+            className="appointment-form"
+            id={APPOINTMENT_FORM_ID}
+            onSubmit={handleSubmit}
+          >
             <div>
               <h2 className="appointment-title">ЗАПИС НА ПРИЙОМ</h2>
 
@@ -215,6 +246,7 @@ export function Contacts() {
                 <textarea
                   id="request"
                   name="message"
+                  ref={messageRef}
                   rows={1}
                   placeholder="Коротко опишіть свою проблему або запитання..."
                   value={data.message}
