@@ -206,3 +206,90 @@
   bottom: 0;
   transform: none;
 }
+
+/* ===== Адаптив ===== */
+@media (max-width: 1024px) {
+  .personal {
+    padding: 70px 0;
+    margin: 40px 0;
+  }
+  .personal-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .personal-top-left {
+    gap: 20px;
+  }
+  .personal-top-left-title {
+    font-size: 40px;
+    line-height: 42px;
+  }
+  .personal-top-right {
+    max-width: 100%;
+  }
+  .personal .swiper-pagination {
+    margin-top: 40px;
+  }
+  .personal-card {
+    max-width: 100%;
+    max-height: none;
+  }
+}
+
+@media (max-width: 900px) {
+  /* на тач-девайсах hover не працює — показуємо деталі одразу */
+  .personal-card-more {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    transform: none;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .personal {
+    padding: 48px 0;
+    margin: 24px 0;
+  }
+  .personal-top-left-line {
+    gap: 12px;
+  }
+  .personal-top-left-line p {
+    font-size: 13px;
+  }
+  .personal-top-left-title {
+    font-size: 30px;
+    line-height: 32px;
+  }
+  .personal-top-right {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .personal-card {
+    max-width: 100%;
+    max-height: none;
+  }
+  .personal-card-name {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .personal-card-specialization {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .personal-card-more {
+    padding-top: 16px;
+  }
+  .personal .swiper-pagination {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .personal-card-img {
+    aspect-ratio: 3 / 4;
+  }
+}
