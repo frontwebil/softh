@@ -12,6 +12,7 @@ import { Icon4 } from "../../../public/Request/Icon4";
 import { Icon5 } from "../../../public/Request/Icon5";
 import { Icon6 } from "../../../public/Request/Icon3 copy 3";
 import { Icon1 } from "../../../public/Request/Icon1";
+import { useScreenWidth } from "@/lib/useScreenWidth";
 
 const PRICE_SECTIONS = [
   {
@@ -46,8 +47,11 @@ const PRICE_SECTIONS = [
   },
 ] as const;
 
-/** «|» у назві послуги = перенос на новий рядок */
-function renderTitle(title: string) {
+function renderTitle(title: string, isMobile: boolean) {
+  if (isMobile) {
+    return title.replaceAll("|", " ");
+  }
+
   const lines = title.split("|").map((line) => line.trim());
 
   return lines.map((line, index) => (
@@ -77,6 +81,9 @@ export function Price() {
     prosthetics: [],
   });
   const [opened, setOpened] = useState<string | null>("consultation");
+  const width = useScreenWidth();
+  const isMobile = width <= 768;
+
   useEffect(() => {
     async function fetchTestimonials() {
       try {
@@ -161,7 +168,7 @@ export function Price() {
                       <div className="price-left-card-content-card" key={el.id}>
                         <div className="price-left-card-content-left">
                           <p>( {el.order + 1} )</p>
-                          <h4>{renderTitle(el.title)}</h4>
+                          <h4>{renderTitle(el.title, isMobile)}</h4>
                         </div>
 
                         <div className="price-left-card-content-line" />

@@ -17,14 +17,14 @@ import { Testimonials } from "@/Components/Testimonials/Testimonials";
 export default function Home() {
   return (
     <>
-      <Header />
-      <Hero />
+      {/* <Header /> */}
+      {/* <Hero /> */}
       {/* <Advantages /> */}
       {/* <Request /> */}
       {/* <Services /> */}
-      {/* <AboutBanner /> */}
-      {/* <Personal /> */}
-      {/* <Cases /> */}
+      <AboutBanner />
+      <Personal />
+      <Cases />
       <Price />
       <ComfortBanner />
       <Steps />

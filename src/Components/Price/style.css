@@ -249,7 +249,7 @@
     order: -1;
     max-width: 100%;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 12;
     object-fit: cover;
     border-radius: 20px;
   }
@@ -309,17 +309,19 @@
   .price-left-card-content {
     padding: 0 16px;
   }
-  /* на мобілці пунктирна лінія між назвою і ціною зайва — рядок у 2 рівні */
   .price-left-card-content-card {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 6px;
+    border-bottom: 1px solid #bbb1a6;
+    padding-bottom: 6px;
+    align-items: flex-end;
   }
+
   .price-left-card-content-left {
     max-width: 100%;
     width: 100%;
-    align-items: flex-start;
     padding-right: 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .price-left-card-content-left h4 {
     line-height: 18px;
@@ -331,8 +333,15 @@
     display: none;
   }
   .price-left-card-content-price {
-    padding-left: 30px;
-    text-align: left;
+    text-align: right;
+    text-wrap: nowrap;
     color: rgba(117, 98, 75, 1);
+  }
+}
+
+@media (max-width: 440px) {
+  .price-left-text-title {
+    font-size: 28px;
+    line-height: 32px;
   }
 }
