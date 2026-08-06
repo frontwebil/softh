@@ -17,7 +17,7 @@ import { Testimonials } from "@/Components/Testimonials/Testimonials";
 export default function Home() {
   return (
     <>
-      <Header />
+      {/* <Header />
       <Hero />
       <Advantages />
       <Request />
@@ -27,7 +27,7 @@ export default function Home() {
       <Cases />
       <Price />
       <ComfortBanner />
-      <Steps />
+      <Steps /> */}
       <Testimonials />
       <Contacts />
       <Faq />
