@@ -3,6 +3,8 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import "./reset.css";
 import { ToasterClient } from "@/Providers/ToasterClient";
+import { StructuredData } from "@/Components/Seo/StructuredData";
+import { SITE, SITE_URL } from "@/lib/siteConfig";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -15,37 +17,86 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+
   title: {
-    default: "SOFTH СТО - Стоматологія",
-    template: "%s | SOFTH СТО",
+    default:
+      "Стоматологія в Києві та на Борщагівці — SOFTH СТО | Стоматологічна клініка",
+    template: "%s | SOFTH СТО — стоматологія Київ, Борщагівка",
   },
 
   description:
-    "Стоматологія SOFTH СТО. Точна діагностика, зрозумілий план лікування та сучасна стоматологічна допомога.",
+    "Стоматологія SOFTH СТО — Петропавлівська Борщагівка (Київ), вулиця Авіаторів, 2Д. Лікування зубів, імплантація, ортодонтія, дитяча стоматологія. Точна діагностика та узгоджена вартість до початку лікування. Запис: +38 (098) 200-50-55.",
+
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE_URL }],
+  creator: SITE.name,
+  publisher: SITE.name,
 
   keywords: [
-    "стоматологія",
-    "стоматолог",
-    "лікування зубів",
-    "стоматологічна клініка",
+    "стоматологія Київ",
+    "стоматологія Борщагівка",
+    "стоматолог Борщагівка",
+    "стоматологія Петропавлівська Борщагівка",
+    "стоматологічна клініка Київ",
+    "стоматолог Київ",
+    "лікування зубів Київ",
+    "імплантація зубів Київ",
+    "ортодонт Борщагівка",
+    "дитяча стоматологія Київ",
+    "протезування зубів Київ",
     "SOFTH СТО",
   ],
+
+  category: "Стоматологія",
+
+  alternates: {
+    canonical: "/",
+  },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 
   openGraph: {
-    title: "SOFTH СТО — Стоматологія",
+    title: "Стоматологія в Києві та на Борщагівці — SOFTH СТО",
     description:
-      "Точна діагностика, зрозумілий план лікування та сучасна стоматологічна допомога.",
+      "Лікування зубів, імплантація, ортодонтія та дитяча стоматологія. Петропавлівська Борщагівка, вулиця Авіаторів, 2Д. Запис: +38 (098) 200-50-55.",
+    url: SITE_URL,
     type: "website",
     locale: "uk_UA",
-    siteName: "SOFTH СТО",
+    siteName: SITE.name,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Стоматологія SOFTH СТО — Київ, Петропавлівська Борщагівка",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Стоматологія в Києві та на Борщагівці — SOFTH СТО",
+    description:
+      "Точна діагностика, зрозумілий план лікування та узгоджена вартість. Запис: +38 (098) 200-50-55.",
+    images: ["/og-image.png"],
+  },
+
+  other: {
+    "geo.region": "UA-32",
+    "geo.placename": "Петропавлівська Борщагівка, Київська область",
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +108,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <StructuredData />
         <ToasterClient />
         {children}
       </body>
