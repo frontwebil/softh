@@ -34,6 +34,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 72px;
+  gap: 16px;
 }
 .advantages-card {
   background: #EDE9E3;
