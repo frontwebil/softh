@@ -12,7 +12,7 @@ export function Hero() {
     <section className="hero" id="hero">
       <Image
         src="/Hero/hero-bgv2.webp"
-        alt=""
+        alt="Стоматологія SOFTH СТО у Петропавлівській Борщагівці, Київ"
         fill
         priority
         className="hero-bg"
