@@ -144,3 +144,83 @@
 .request-right-content-card:hover .request-right-content-card-right-icon {
   background: rgb(255, 255, 255);
 }
+
+/* ===== Адаптив ===== */
+@media (max-width: 1100px) {
+  .request .container {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 32px;
+  }
+  .request-main-img {
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .request-right-content {
+    max-width: 100%;
+    gap: 28px;
+  }
+  .request-right-content-text h2 {
+    font-size: 40px;
+    line-height: 42px;
+  }
+  .request-right-content-text p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .request .container {
+    padding: 0 16px;
+    gap: 24px;
+  }
+  .request-main-img {
+    aspect-ratio: 4 / 3;
+  }
+  .request-right-content-top {
+    gap: 12px;
+  }
+  .request-right-content-top p {
+    font-size: 13px;
+  }
+  .request-right-content-text {
+    gap: 16px;
+  }
+  .request-right-content-text h2 {
+    font-size: 30px;
+    line-height: 32px;
+  }
+  .request-right-content-text h2 br {
+    display: none;
+  }
+  .request-right-content-text p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .request-right-content-cards {
+    gap: 10px;
+  }
+  .request-right-content-card {
+    border-radius: 20px;
+    padding: 12px 12px 12px 16px;
+    gap: 12px;
+  }
+  .request-right-content-card-left {
+    gap: 10px;
+  }
+  .request-right-content-card-left-icon {
+    max-width: 28px;
+    flex-shrink: 0;
+  }
+  .request-right-content-card-left-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .request-right-content-card-right-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+}
