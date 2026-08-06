@@ -107,7 +107,7 @@ export function Price() {
   }, []);
 
   return (
-    <section className="price">
+    <section className="price" id="price">
       <div className="container">
         <div className="price-left">
           <div className="price-top">

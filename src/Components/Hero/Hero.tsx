@@ -1,12 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import "./style.css";
 import Image from "next/image";
 import { PiArrowUpRightBold, PiInstagramLogoFill } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
+import { openAppointmentForm } from "@/lib/appointment";
 
 export function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       <Image
         src="/Hero/hero-bgv2.webp"
         alt=""
@@ -28,11 +31,15 @@ export function Hero() {
             зрозумілий план лікування ще до початку процедур
           </p>
           <div className="hero-content-buttons">
-            <Link href={"/"} className="book-button">
+            <button
+              type="button"
+              className="book-button"
+              onClick={() => openAppointmentForm()}
+            >
               <p className="book-button-text">Запис на консультацію</p>
               <PiArrowUpRightBold className="book-button-icon" />
-            </Link>
-            <Link href={"/"} className="hero-content-see-services">
+            </button>
+            <Link href={"/#services"} className="hero-content-see-services">
               Переглянути послуги
             </Link>
           </div>

@@ -75,6 +75,10 @@
   gap: 16px;
 }
 .request-right-content-card {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;

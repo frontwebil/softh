@@ -43,7 +43,7 @@ export const services = [
 
 export function Services() {
   return (
-    <section className="services">
+    <section className="services" id="services">
       <div className="container">
         <div className="services-top">
           <h2 className="services-top-title">
@@ -68,7 +68,7 @@ export function Services() {
           ))}
         </div>
         <div className="see-price-button">
-          <Link href={"/"} className="book-button">
+          <Link href={"/#price"} className="book-button">
             <p className="book-button-text">переглянути прайс</p>
             <PiArrowUpRightBold className="book-button-icon" />
           </Link>

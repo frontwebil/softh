@@ -25,7 +25,7 @@ export const advantages = [
 
 export function Advantages() {
   return (
-    <section className="advantages">
+    <section className="advantages" id="advantages">
       <div className="container">
         <div className="advantages-top">
           <h2 className="advantages-top-title">

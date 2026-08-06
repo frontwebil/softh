@@ -30,7 +30,7 @@ const STEPS = [
 
 export function Steps() {
   return (
-    <section className="steps">
+    <section className="steps" id="steps">
       <div className="container">
         <div className="steps-top">
           <div className="line"></div>

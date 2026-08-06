@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { openAppointmentForm } from "@/lib/appointment";
 import "./style.css";
 
 import { PiArrowUpRightBold } from "react-icons/pi";
@@ -44,7 +47,7 @@ export const treatmentReasons = [
 
 export function Request() {
   return (
-    <section className="request">
+    <section className="request" id="request">
       <div className="container">
         <Image
           src={"/Request/main-img.webp"}
@@ -73,7 +76,13 @@ export function Request() {
               const Icon = el.icon;
 
               return (
-                <div className="request-right-content-card" key={el.id}>
+                <button
+                  type="button"
+                  className="request-right-content-card"
+                  key={el.id}
+                  onClick={() => openAppointmentForm(el.title)}
+                  aria-label={`Записатися: ${el.title}`}
+                >
                   <div className="request-right-content-card-left">
                     <div className="request-right-content-card-left-icon">
                       <Icon />
@@ -87,7 +96,7 @@ export function Request() {
                   <div className="request-right-content-card-right-icon">
                     <PiArrowUpRightBold className="request-right-button-icon" />
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>
