@@ -232,6 +232,7 @@
   }
   .testimonials-top-left-top {
     margin-bottom: 20px;
+    gap: 10px;
   }
   .testimonials-top-left-top p {
     font-size: 14px;
@@ -258,4 +259,11 @@
   .testimonials-read-all {
     margin-top: 36px;
   }
+}
+
+@media (max-width: 360px) {
+      .testimonials-top-left-title {
+        font-size: 30px;
+        line-height: 34px;
+    }
 }

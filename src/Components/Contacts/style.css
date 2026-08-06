@@ -487,6 +487,10 @@
     margin-bottom: 20px;
     font-size: 14px;
     letter-spacing: 10%;
+    gap: 10px;
+  }
+  .faq-right-content-top{
+    gap: 10px;
   }
   .contacts-top-left-title {
     font-size: 32px;
@@ -558,7 +562,7 @@
     font-size: 16px;
   }
   .appointment-field textarea {
-    min-height: 48px;
+    min-height: 60px;
     resize: vertical;
   }
   .appointment-submit {

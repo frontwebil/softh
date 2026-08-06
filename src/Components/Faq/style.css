@@ -221,3 +221,9 @@
     max-height: 2500px;
   }
 }
+
+@media (max-width: 480px) {
+  .faq-right-content-top {
+    gap: 10px;
+  }
+}
