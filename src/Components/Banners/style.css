@@ -95,3 +95,62 @@
   vertical-align: middle;
   color: rgba(255, 255, 255, 1);
 }
+
+/* ===== Адаптив (ComfortBanner + AboutBanner) ===== */
+@media (max-width: 1024px) {
+  .comfort-banner {
+    padding: 70px 0;
+  }
+  .banner-title {
+    font-size: 40px;
+    line-height: 42px;
+    padding-top: 64px;
+    padding-bottom: 24px;
+  }
+  .banner-cards {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .comfort-banner {
+    padding: 48px 0;
+  }
+  .banner-content-top {
+    gap: 12px;
+  }
+  .banner-content-top-text {
+    font-size: 13px;
+  }
+  .banner-title {
+    font-size: 30px;
+    line-height: 34px;
+    padding-top: 32px;
+    padding-bottom: 16px;
+  }
+  .banner-title br {
+    display: none;
+  }
+  .banner-text {
+    font-size: 16px;
+    line-height: 22px;
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+  .banner-cards {
+    margin-top: 32px;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .banner-card {
+    gap: 12px;
+  }
+  .banner-card img {
+    flex-shrink: 0;
+  }
+  .banner-card p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
