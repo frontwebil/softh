@@ -45,3 +45,8 @@ body{
   width: 24px;
   height: 2px;
 }
+
+/* Відступ під фіксований хедер при переході по анкорах */
+section[id] {
+  scroll-margin-top: 96px;
+}

@@ -3,7 +3,7 @@ import "./style.css";
 
 export function AboutBanner() {
   return (
-    <section className="comfort-banner">
+    <section className="comfort-banner" id="about">
       <Image src={"/ComfortBanner/bg.webp"} fill alt="" draggable={false}/>
       <div className="container">
         <div className="banner-content">

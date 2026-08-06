@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Faq() {
   return (
-    <section className="faq">
+    <section className="faq" id="faq">
       <div className="container">
         <div className="faq-left-img">
           <Image
