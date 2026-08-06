@@ -1,0 +1,208 @@
+.personal {
+  padding: 100px 0;
+  margin: 60px 0;
+}
+.container {
+}
+.personal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 70px;
+}
+.personal-top-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.personal-top-left-line p {
+  color: rgba(173, 153, 128, 1);
+
+  font-family: Manrope;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 20%;
+  text-transform: uppercase;
+}
+.personal-top-left-line {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.personal-top-left-line .line {
+  background-color: rgba(173, 153, 128, 1);
+}
+.personal-top-left-title {
+  font-family: Inter;
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 50px;
+  letter-spacing: -6%;
+
+  color: rgba(28, 26, 23, 1);
+}
+.personal-top-right {
+  max-width: 425px;
+  width: 100%;
+
+  font-weight: 300;
+  font-style: Light;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
+
+  color: rgba(138, 130, 120, 1);
+}
+.personal-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.personal-card {
+  max-width: 312px;
+  width: 100%;
+
+  max-height: 524px;
+}
+.personal-card-img {
+  width: 100%;
+  aspect-ratio: 156 / 217;
+  border-radius: 20px;
+  background-color: rgba(138, 130, 120, 0.1);
+
+  overflow: hidden;
+  transition: aspect-ratio 0.45s ease;
+}
+.personal-card-name {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+
+  color: rgba(28, 26, 23, 1);
+  margin-top: 32px;
+}
+.personal-card-specialization {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -2%;
+
+  color: rgba(117, 98, 75, 1);
+  margin-top: 12px;
+}
+.personal-card-more {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+
+  transition:
+    max-height 0.45s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    padding-top 0.3s ease;
+
+  padding-top: 0;
+}
+.personal-card-more-title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+
+  color: rgba(28, 26, 23, 1);
+  margin-bottom: 12px;
+}
+.personal-card-more-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: disc;
+}
+.personal-card-more-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.personal-card-more-list-disc-item {
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: rgba(138, 130, 120, 1);
+}
+.personal-card-more-list-item-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+
+  color: rgba(28, 26, 23, 1);
+}
+
+.personal-card:hover .personal-card-img {
+  aspect-ratio: 1 / 1;
+}
+
+.personal-card:hover .personal-card-more {
+  max-height: 200px; /* більше ніж висота контенту */
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: 20px;
+}
+
+.personal .swiper {
+  overflow: hidden;
+}
+
+.personal .swiper-slide {
+  height: auto;
+}
+
+.personal-card {
+  height: 100%;
+}
+
+.personal .swiper-button-prev,
+.personal .swiper-button-next {
+  color: #75624b;
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.personal .swiper-button-prev::after,
+.personal .swiper-button-next::after {
+  font-size: 18px;
+}
+
+.personal .swiper-pagination {
+  position: relative;
+  margin-top: 72px;
+}
+
+.personal .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #c9b8a4;
+  opacity: 1;
+}
+
+.personal .swiper-pagination-bullet-active {
+  background: #75624b;
+}
+
+.personal .swiper-button-prev,
+.personal .swiper-button-next {
+  top: calc(100% - 25px) !important;
+  bottom: 0;
+  transform: none;
+}

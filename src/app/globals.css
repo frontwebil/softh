@@ -21,6 +21,8 @@ body{
   background-color: #ad9980;
   padding: 6px 6px 6px 16px;
   border-radius: 100px;
+
+  cursor: pointer;
 }
 .book-button-text {
   font-weight: 600;
