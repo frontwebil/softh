@@ -19,6 +19,10 @@ export function Contacts() {
     contactWay: "phoneCall",
   });
 
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
 
   /** CTA-кнопки з інших секцій: підставити запит і сфокусувати поле */
@@ -26,6 +30,8 @@ export function Contacts() {
     const handleRequest = (event: Event) => {
       const { message } =
         (event as CustomEvent<AppointmentRequestDetail>).detail ?? {};
+
+      setStatus("idle");
 
       if (message) {
         setData((prev) => ({ ...prev, message }));
@@ -61,10 +67,21 @@ export function Contacts() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    axios.post("/api/createLeed", data);
+    if (status === "loading") return;
+
+    setStatus("loading");
+
+    try {
+      await axios.post("/api/createLeed", data);
+
+      setStatus("success");
+      setData({ name: "", phone: "", message: "", contactWay: "phoneCall" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -200,6 +217,36 @@ export function Contacts() {
             id={APPOINTMENT_FORM_ID}
             onSubmit={handleSubmit}
           >
+            {status === "success" ? (
+              <div className="appointment-success">
+                <div className="appointment-success-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12.5L10 17.5L19 7.5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+
+                <p className="appointment-success-title">Дякуємо!</p>
+
+                <p className="appointment-success-text">
+                  Ми зв{"'"}яжемося з вами найближчим часом
+                </p>
+
+                <button
+                  type="button"
+                  className="appointment-success-again"
+                  onClick={() => setStatus("idle")}
+                >
+                  Надіслати ще одну заявку
+                </button>
+              </div>
+            ) : (
+              <>
             <div>
               <h2 className="appointment-title">ЗАПИС НА ПРИЙОМ</h2>
 
@@ -303,8 +350,21 @@ export function Contacts() {
               </div>
             </div>
 
-            <button type="submit" className="appointment-submit">
-              <span>НАДІСЛАТИ ЗАПИТ</span>
+            {status === "error" && (
+              <p className="appointment-error" role="alert">
+                Не вдалося надіслати заявку. Спробуйте ще раз або
+                зателефонуйте нам.
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className="appointment-submit"
+              disabled={status === "loading"}
+            >
+              <span>
+                {status === "loading" ? "НАДСИЛАЄМО..." : "НАДІСЛАТИ ЗАПИТ"}
+              </span>
 
               <span className="appointment-submit-icon">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -318,6 +378,8 @@ export function Contacts() {
                 </svg>
               </span>
             </button>
+              </>
+            )}
           </form>
         </div>
       </div>

@@ -364,3 +364,67 @@
 .appointment-submit:hover {
   opacity: 0.9;
 }
+
+
+/* Успішна відправка заявки */
+.appointment-success {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+.appointment-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  background-color: rgba(173, 153, 128, 0.15);
+  color: rgba(173, 153, 128, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.appointment-success-title {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 32px;
+  letter-spacing: -2%;
+  color: #75624b;
+}
+.appointment-success-text {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(28, 26, 23, 0.7);
+  max-width: 320px;
+}
+.appointment-success-again {
+  margin-top: 10px;
+  color: #75624b;
+  font-size: 16px;
+  border-bottom: 1px solid #75624b;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.appointment-success-again:hover {
+  opacity: 0.7;
+}
+.appointment-error {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: #b04a3a;
+  margin-bottom: 14px;
+}
+.appointment-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
