@@ -284,7 +284,11 @@
     padding-top: 16px;
   }
   .personal .swiper-pagination {
-    margin-top: 28px;
+    margin-top: 48px;
+  }
+
+  .personal .swiper-button-prev, .personal .swiper-button-next{
+    display: none;
   }
 }
 

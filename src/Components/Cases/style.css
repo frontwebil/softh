@@ -313,7 +313,7 @@
 
 @media (max-width: 640px) {
   .cases {
-    padding: 48px 16px;
+    padding: 48px 0px;
   }
   .cases-top-left-line {
     gap: 12px;
