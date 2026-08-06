@@ -3,7 +3,6 @@ import { AboutBanner } from "@/Components/Banners/AboutBanner";
 import { ComfortBanner } from "@/Components/Banners/ComfortBanner";
 import { Cases } from "@/Components/Cases/Cases";
 import { Contacts } from "@/Components/Contacts/Contacts";
-import { Footer } from "@/Components/Footer/Footer";
 import { Faq } from "@/Components/Faq/Faq";
 import { Footer } from "@/Components/Footer/Footer";
 import { Header } from "@/Components/Header/Header";
