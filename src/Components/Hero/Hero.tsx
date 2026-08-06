@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section className="hero">
       <Image
-        src="/Hero/hero-bg.webp"
+        src="/Hero/hero-bgv2.webp"
         alt=""
         fill
         priority

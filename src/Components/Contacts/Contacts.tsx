@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./style.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useState } from "react";
+import axios from "axios";
 
 export function Contacts() {
   const [data, setData] = useState({
@@ -36,7 +37,7 @@ export function Contacts() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(data);
+    axios.post("/api/createLeed", data);
   };
 
   return (
