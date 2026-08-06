@@ -1,0 +1,132 @@
+.faq {
+  margin-bottom: 60px;
+}
+.faq .container {
+  padding: 0 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.faq-left-img img {
+  max-width: 610px;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
+  border-radius: 0 20px 20px 0;
+}
+.faq-left-img {
+  margin-top: 110px;
+  max-width: 610px;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
+  border-radius: 0 20px 20px 0;
+}
+.faq-right-content {
+  max-width: 650px;
+  width: 100%;
+}
+.faq-right-content-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.faq-right-content-top .line {
+  background-color: #8a8278;
+}
+
+.faq-right-content-top p {
+  color: #8a8278;
+}
+.faq-right-content-top-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 64px 0 100px;
+}
+
+.faq-right-content-top-text-title {
+  font-family: Inter;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 52px;
+  line-height: 46px;
+  letter-spacing: -6%;
+
+  color: #1c1a17;
+}
+.faq-right-content-top-text-description {
+  font-family: Manrope;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
+
+  color: #8a8278;
+  max-width: 430px;
+}
+
+.faq-right-content-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.faq-right-content-question-card {
+  display: flex;
+  flex-direction: column;
+}
+.faq-right-content-question-card-top {
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ede9e3;
+  padding: 16px 12px 16px 20px;
+
+  cursor: pointer;
+}
+.faq-right-content-question-card-top-title {
+  font-family: Manrope;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -2%;
+
+  color: #1c1a17;
+}
+.price-left-card-top-right-icon.active {
+  transform: rotate(180deg);
+}
+.price-left-card-top-right-icon {
+}
+.faq-right-content-question-card-text {
+  border-radius: 10px;
+  background-color: #ede9e3;
+
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transition: all 0.3s ease;
+  margin-top: 0;
+}
+
+.faq-right-content-question-card-text p {
+  padding: 18px 20px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -2%;
+
+  color: rgba(28, 26, 23, 0.7);
+}
+
+.faq-right-content-question-card-text.active {
+  max-height: 1500px; /* або більше */
+  opacity: 1;
+  margin-top: 12px;
+}
+
