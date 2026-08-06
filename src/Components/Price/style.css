@@ -218,3 +218,121 @@
   padding-top: 18px;
   padding-bottom: 18px;
 }
+
+/* ===== Адаптив ===== */
+@media (max-width: 1100px) {
+  .price {
+    padding: 70px 0;
+    margin: 40px 0;
+  }
+  .price .container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 20px;
+    gap: 32px;
+  }
+  .price-left {
+    max-width: 100%;
+  }
+  .price-top {
+    padding-bottom: 32px;
+  }
+  .price-left-text-title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .price-left-text-description {
+    margin-bottom: 40px;
+    max-width: 100%;
+  }
+  .price-main-img {
+    order: -1;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .price-left-cards {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .price {
+    padding: 48px 0;
+    margin: 24px 0;
+  }
+  .price .container {
+    padding: 0 16px;
+  }
+  .price-top {
+    gap: 12px;
+    padding-bottom: 24px;
+  }
+  .price-top p {
+    font-size: 13px;
+  }
+  .price-left-text-title {
+    font-size: 30px;
+    line-height: 32px;
+  }
+  .price-left-text-description {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+  .price-main-img {
+    aspect-ratio: 4 / 3;
+  }
+  .price-left-cards {
+    gap: 12px;
+  }
+  .price-left-card-top {
+    padding: 14px 16px;
+    gap: 12px;
+    text-align: left;
+  }
+  .price-left-card-top-left {
+    gap: 12px;
+  }
+  .price-left-card-top-left svg {
+    flex-shrink: 0;
+  }
+  .price-left-card-top-left p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .price-left-card-top-right-icon {
+    flex-shrink: 0;
+  }
+  .price-left-card-content {
+    padding: 0 16px;
+  }
+  /* на мобілці пунктирна лінія між назвою і ціною зайва — рядок у 2 рівні */
+  .price-left-card-content-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .price-left-card-content-left {
+    max-width: 100%;
+    width: 100%;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+  .price-left-card-content-left h4 {
+    line-height: 18px;
+  }
+  .price-left-card-content-left p {
+    flex-shrink: 0;
+  }
+  .price-left-card-content-line {
+    display: none;
+  }
+  .price-left-card-content-price {
+    padding-left: 30px;
+    text-align: left;
+    color: rgba(117, 98, 75, 1);
+  }
+}
