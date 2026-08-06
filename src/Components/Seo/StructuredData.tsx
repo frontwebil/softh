@@ -1,3 +1,4 @@
+import { faqItems } from "@/lib/faqData";
 import {
   OPENING_HOURS,
   SEO_SERVICES,
@@ -6,7 +7,7 @@ import {
 } from "@/lib/siteConfig";
 
 /**
- * JSON-LD для локального SEO: Dentist (LocalBusiness) + WebSite.
+ * JSON-LD для локального SEO: Dentist (LocalBusiness) + FAQPage + WebSite.
  * Допомагає Google звʼязати клініку з локацією (Київ / Борщагівка).
  */
 export function StructuredData() {
@@ -52,6 +53,20 @@ export function StructuredData() {
     })),
   };
 
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/#faq`,
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.content.replace(/\s+/g, " ").trim(),
+      },
+    })),
+  };
+
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -67,7 +82,7 @@ export function StructuredData() {
       type="application/ld+json"
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify([dentist, website]),
+        __html: JSON.stringify([dentist, faq, website]),
       }}
     />
   );
