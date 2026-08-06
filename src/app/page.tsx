@@ -2,6 +2,7 @@ import { Advantages } from "@/Components/Advantages/Advantages";
 import { AboutBanner } from "@/Components/Banners/AboutBanner";
 import { ComfortBanner } from "@/Components/Banners/ComfortBanner";
 import { Contacts } from "@/Components/Contacts/Contacts";
+import { Footer } from "@/Components/Footer/Footer";
 import { Faq } from "@/Components/Faq/Faq";
 import { Header } from "@/Components/Header/Header";
 import { Hero } from "@/Components/Hero/Hero";
@@ -26,6 +27,7 @@ export default function Home() {
       <Testimonials />
       <Contacts />
       <Faq />
+      <Footer />
     </>
   );
 }
