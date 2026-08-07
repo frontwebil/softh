@@ -3,7 +3,7 @@
  * Домен задається через NEXT_PUBLIC_SITE_URL (Vercel → Environment Variables).
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://softh-cto.com"
+  "https://softh-cto.com.ua"
 ).replace(/\/$/, "");
 
 export const SITE = {
@@ -23,7 +23,11 @@ export const SITE = {
 } as const;
 
 export const OPENING_HOURS = [
-  { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "19:00" },
+  {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "19:00",
+  },
   { days: ["Saturday"], opens: "10:00", closes: "18:00" },
 ] as const;
 
