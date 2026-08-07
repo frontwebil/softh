@@ -24,7 +24,7 @@ export function Hero() {
             <p className="hero-content-text-top">Турбота про вашу усмішку</p>
           </div>
           <h1 className="hero-content-title">
-            Стоматологія на Борщагівці, де ви розумієте{" "}
+            Стоматологія у Борщагівці, де ви розумієте{" "}
             <span>кожне рішення</span>
           </h1>
           <p className="hero-content-text">
