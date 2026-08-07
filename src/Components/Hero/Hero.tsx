@@ -12,7 +12,7 @@ export function Hero() {
     <section className="hero" id="hero">
       <Image
         src="/Hero/hero-bgv2.webp"
-        alt="Стоматологія SOFTH СТО у Петропавлівській Борщагівці, Київ"
+        alt="Стоматологія SOFTH СТО у Петропавлівській Борщагівці"
         fill
         priority
         className="hero-bg"
@@ -24,10 +24,11 @@ export function Hero() {
             <p className="hero-content-text-top">Турбота про вашу усмішку</p>
           </div>
           <h1 className="hero-content-title">
-            Стоматологія у Києві, де ви розумієте <span>кожне рішення</span>
+            Стоматологія на Борщагівці, де ви розумієте{" "}
+            <span>кожне рішення</span>
           </h1>
           <p className="hero-content-text">
-            Клініка на Борщагівці: проводимо точну діагностику, пояснюємо
+            Клініка у Петропавлівській Борщагівці: проводимо точну діагностику, пояснюємо
             можливі варіанти та складаємо зрозумілий план лікування ще до
             початку процедур
           </p>

@@ -3,7 +3,7 @@
  * Домен задається через NEXT_PUBLIC_SITE_URL (Vercel → Environment Variables).
  */
 export const SITE_URL = (
-  "https://softh-cto.com.ua"
+  "https://softh-cto.com"
 ).replace(/\/$/, "");
 
 export const SITE = {

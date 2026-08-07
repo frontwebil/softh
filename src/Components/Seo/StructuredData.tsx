@@ -8,7 +8,7 @@ import {
 
 /**
  * JSON-LD для локального SEO: Dentist (LocalBusiness) + FAQPage + WebSite.
- * Допомагає Google звʼязати клініку з локацією (Київ / Борщагівка).
+ * Допомагає Google звʼязати клініку з локацією (Петропавлівська Борщагівка).
  */
 export function StructuredData() {
   const dentist = {
@@ -18,7 +18,7 @@ export function StructuredData() {
     name: SITE.name,
     legalName: SITE.legalName,
     description:
-      "Стоматологія SOFTH СТО у Петропавлівській Борщагівці (Київ). Точна діагностика, зрозумілий план лікування та узгоджена вартість до початку процедур.",
+      "Стоматологія SOFTH СТО у Петропавлівській Борщагівці. Точна діагностика, зрозумілий план лікування та узгоджена вартість до початку процедур.",
     url: SITE_URL,
     telephone: SITE.phone,
     image: `${SITE_URL}/og-image.png`,
@@ -34,8 +34,8 @@ export function StructuredData() {
     },
     hasMap: SITE.mapUrl,
     areaServed: [
-      { "@type": "City", name: "Київ" },
       { "@type": "Place", name: "Петропавлівська Борщагівка" },
+      { "@type": "Place", name: "Новосілки" },
       { "@type": "Place", name: "Софіївська Борщагівка" },
       { "@type": "Place", name: "Борщагівка" },
     ],
