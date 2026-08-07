@@ -54,7 +54,8 @@
   font-size: 72px;
   line-height: 60px;
   letter-spacing: -5%;
-  max-width: 512px;
+  max-width: 712px;
+  width: 100%;
   color: #e4e3df;
 }
 .hero-content-text {
