@@ -110,3 +110,114 @@
   height: 20px;
   color: rgba(228, 227, 223, 1);
 }
+
+@media (max-width: 1100px) {
+  .hero-content {
+    padding-top: 160px;
+    padding-bottom: 80px;
+  }
+  .hero-content-title {
+    font-size: 60px;
+    line-height: 54px;
+    max-width: 440px;
+  }
+  .hero-content-text {
+    font-size: 20px;
+    line-height: 27px;
+    max-width: 480px;
+  }
+  .hero-content-buttons {
+    margin-top: 48px;
+  }
+  .hero-icons {
+    bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28, 26, 23, 0.45) 0%,
+      rgba(28, 26, 23, 0.15) 35%,
+      rgba(28, 26, 23, 0.75) 100%
+    );
+  }
+  .hero-bg {
+    object-position: 60% center;
+  }
+
+  .hero-content-text-top-flex {
+    padding-bottom: 32px;
+  }
+  .hero-content-title {
+    font-size: 46px;
+    line-height: 44px;
+    max-width: 400px;
+  }
+  .hero-content-text {
+    font-size: 18px;
+    line-height: 25px;
+    max-width: 420px;
+  }
+  .hero-icons {
+    flex-direction: row;
+    position: static;
+    margin-top: 32px;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero,
+  .hero-content {
+    min-height: 640px;
+  }
+  .hero-content {
+    padding-top: 130px;
+    padding-bottom: 48px;
+  }
+  .hero-content-text-top-flex {
+    gap: 12px;
+    padding-bottom: 24px;
+  }
+  .hero-content-text-top {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 12%;
+  }
+  .hero-content-title {
+    font-size: 36px;
+    line-height: 36px;
+    max-width: 340px;
+  }
+  .hero-content-text {
+    font-size: 16px;
+    line-height: 23px;
+    padding-top: 16px;
+    max-width: 100%;
+  }
+  .hero-content-buttons {
+    margin-top: 32px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .hero-content-buttons .book-button {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-content-see-services {
+    font-size: 15px;
+    text-align: center;
+    align-self: center;
+  }
+  .hero-icons {
+    margin-top: 28px;
+    gap: 10px;
+  }
+}
