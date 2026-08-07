@@ -3,6 +3,14 @@
   position: relative;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.35); /* рівень затемнення */
+}
+
 .hero-bg {
   position: absolute;
   top: 0;
@@ -89,10 +97,11 @@
 .hero-icons {
   position: absolute;
   bottom: 100px;
-  right: 0;
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  z-index: 1;
 }
 .hero-icon {
   width: 36px;
@@ -136,18 +145,6 @@
 }
 
 @media (max-width: 768px) {
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(28, 26, 23, 0.45) 0%,
-      rgba(28, 26, 23, 0.15) 35%,
-      rgba(28, 26, 23, 0.75) 100%
-    );
-  }
   .hero-bg {
     object-position: 60% center;
   }
@@ -174,12 +171,17 @@
 }
 
 @media (max-width: 640px) {
+  .hero .container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+  }
   .hero,
   .hero-content {
-    min-height: 640px;
+    min-height: calc(100vh - 48px - 108px - 20px);
   }
   .hero-content {
-    padding-top: 130px;
+    padding-top: 0px;
     padding-bottom: 48px;
   }
   .hero-content-text-top-flex {
@@ -194,7 +196,7 @@
   .hero-content-title {
     font-size: 36px;
     line-height: 36px;
-    max-width: 340px;
+    max-width: 355px;
   }
   .hero-content-text {
     font-size: 16px;
@@ -205,20 +207,33 @@
   .hero-content-buttons {
     margin-top: 32px;
     flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
+    align-items: start;
+    gap: 24px;
   }
   .hero-content-buttons .book-button {
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
   }
   .hero-content-see-services {
     font-size: 15px;
-    text-align: center;
+    text-align: left;
     align-self: center;
+
+    margin-right: auto;
   }
   .hero-icons {
-    margin-top: 28px;
+    margin-top: 108px;
     gap: 10px;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-content-title {
+    max-width: 355px;
+    font-size: 30px;
+    line-height: 32px;
   }
 }

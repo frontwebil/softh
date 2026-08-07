@@ -17,6 +17,7 @@ const NAV_LINKS = [
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +33,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className={isScrolled ? "scrolled" : ""}>
+    <header className={isScrolled || isOpen ? "scrolled" : ""}>
       <div className="container">
         <div className="header-left">
           <Link href="/" className="logo" aria-label="SOFTH СТО — Головна">
@@ -58,6 +59,22 @@ export function Header() {
             <p className="book-button-text">записатися</p>
             <PiArrowUpRightBold className="book-button-icon" />
           </button>
+          <div
+            onClick={() => setIsOpen((prev) => !prev)}
+            className={`burger-bg ${isOpen ? "open" : ""}`}
+          >
+            <button
+              type="button"
+              className={`burger ${isOpen ? "open" : ""}`}
+              aria-label={isOpen ? "Закрити меню" : "Відкрити меню"}
+              aria-expanded={isOpen}
+            >
+              <span />
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </div>
     </header>

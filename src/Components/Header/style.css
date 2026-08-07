@@ -60,7 +60,6 @@ header .container {
   position: relative;
   text-decoration: none;
   transition: color 0.3s ease;
-
 }
 
 .header-nav-link::after {
@@ -102,4 +101,109 @@ header.scrolled .header-nav .header-nav-link::after {
 
 .header-right-phone:hover {
   opacity: 0.85;
+}
+
+.burger-bg {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+
+.burger {
+  width: 14px;
+  height: 12px;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+
+  height: 2px;
+  width: 100%;
+
+  left: 0;
+
+  background: #0d0e20;
+  border-radius: 9px;
+
+  opacity: 1;
+
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-child(1) {
+  top: 0;
+}
+
+.burger span:nth-child(2),
+.burger span:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger span:nth-child(4) {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+/* Open */
+
+.burger.open span:nth-child(1) {
+  top: 18px;
+  width: 0;
+  left: 50%;
+}
+
+.burger.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.burger.open span:nth-child(4) {
+  top: 18px;
+  width: 0;
+  left: 50%;
+}
+
+.burger-bg.open .burger span {
+  background-color: #fff;
+}
+.burger-bg.open {
+  background-color: #75624b;
+}
+
+@media (max-width: 1100px) {
+  .header-nav {
+    display: none;
+  }
+  .burger-bg {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-right .header-right-phone {
+    display: none;
+  }
+  .header-right .book-button {
+    display: none;
+  }
 }
