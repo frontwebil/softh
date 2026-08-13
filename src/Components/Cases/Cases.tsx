@@ -27,8 +27,8 @@ const cases: CaseItem[] = [
   },
   {
     id: 2,
-    before: "/Cases/before-1.webp",
-    after: "/Cases/after-1.webp",
+    before: "/Cases/before-2.webp",
+    after: "/Cases/after-2.webp",
     doctor: "Dr. Olena Petrenko",
     details: [
       {
