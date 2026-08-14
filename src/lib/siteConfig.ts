@@ -1,10 +1,8 @@
 /**
  * Єдине джерело правди для SEO / структурованих даних.
- * Домен задається через NEXT_PUBLIC_SITE_URL (Vercel → Environment Variables).
+ * Домен зафіксовано в коді (без env): https://www.softh-cto.com
  */
-export const SITE_URL = (
-  "https://softh-cto.com"
-).replace(/\/$/, "");
+export const SITE_URL = "https://www.softh-cto.com";
 
 export const SITE = {
   name: "SOFTH СТО",
