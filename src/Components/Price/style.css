@@ -201,12 +201,7 @@
   padding: 0 20px; /* горизонтальний padding залишаємо */
   margin-top: 0;
 
-  transition:
-    max-height 0.45s ease,
-    opacity 0.25s ease,
-    margin-top 0.35s ease,
-    padding-top 0.35s ease,
-    padding-bottom 0.35s ease;
+  transition: all 0.3s ease;
 }
 
 .price-left-card-content.open {

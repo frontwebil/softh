@@ -30,11 +30,11 @@ export function ComfortBanner() {
             <div className="line"></div>
             <p className="banner-content-top-text">Комфорт пацієнта</p>
           </div>
-          <h2 className="banner-title">
+          <h2 className="banner-title comfort">
             Візит до стоматолога <br />
             <span>без зайвого стресу</span>
           </h2>
-          <p className="banner-text">
+          <p className="banner-text comfort">
             Ми пояснюємо кожен етап, даємо вам час поставити запитання та
             адаптуємо процес лікування відповідно до вашого рівня комфорту
           </p>

@@ -7,7 +7,16 @@ import { useState } from "react";
 import { faqItems } from "@/lib/faqData";
 
 export function Faq() {
-  const [activeQuestion, setActiveQuestion] = useState(0);
+  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
+
+  const handleClick = (i: number) => {
+    if (i == activeQuestion) {
+      setActiveQuestion(null);
+      return;
+    }
+    setActiveQuestion(i);
+  };
+
   return (
     <section className="faq" id="faq">
       <div className="container">
@@ -38,7 +47,7 @@ export function Faq() {
               <div
                 className="faq-right-content-question-card"
                 key={i}
-                onClick={() => setActiveQuestion(i)}
+                onClick={() => handleClick(i)}
               >
                 <div className="faq-right-content-question-card-top">
                   <h3 className="faq-right-content-question-card-top-title">

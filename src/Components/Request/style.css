@@ -98,11 +98,16 @@
 .request-right-content-card-left-icon {
   display: flex;
   align-items: center;
-  opacity: 0.5;
   max-width: 40px;
   width: 100%;
   transition: all 0.3s ease;
 }
+
+.request-right-content-card-left-icon svg {
+  color: rgba(138, 130, 120, 0.5);
+  transition: all 0.3s ease;
+}
+
 .request-right-content-card-left-text {
   font-weight: 400;
   font-size: 20px;
@@ -133,8 +138,10 @@
 }
 
 .request-right-content-card:hover .request-right-content-card-left-icon {
-  color: rgba(255, 255, 255, 1);
   opacity: 1;
+}
+.request-right-content-card:hover .request-right-content-card-left-icon svg {
+  color: rgba(255, 255, 255, 1);
 }
 
 .request-right-content-card:hover .request-right-content-card-left-text {

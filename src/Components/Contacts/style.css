@@ -365,9 +365,8 @@
 }
 
 .appointment-submit:hover {
-  opacity: 0.9;
+  background-color: rgba(117, 98, 75, 1);
 }
-
 
 /* Успішна відправка заявки */
 .appointment-success {
@@ -489,7 +488,7 @@
     letter-spacing: 10%;
     gap: 10px;
   }
-  .faq-right-content-top{
+  .faq-right-content-top {
     gap: 10px;
   }
   .contacts-top-left-title {
