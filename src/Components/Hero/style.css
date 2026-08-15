@@ -83,6 +83,10 @@
   margin-top: 64px;
 }
 
+.hero-content-buttons .book-button{
+  padding: 10px 10px 10px 16px;
+}
+
 .hero-content-see-services {
   font-weight: 400;
   font-size: 18px;

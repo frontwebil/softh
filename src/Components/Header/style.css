@@ -48,7 +48,7 @@ header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   max-width: 550px;
 }
 .header-nav-link {
@@ -87,7 +87,7 @@ header.scrolled .header-nav .header-nav-link::after {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
   position: relative;
   z-index: 3;
 }
@@ -280,7 +280,7 @@ header .container {
   justify-content: center;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
   .header-nav {
     display: none;
   }
