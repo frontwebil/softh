@@ -1,7 +1,4 @@
-/**
- * Єдине джерело правди для SEO / структурованих даних.
- * Домен зафіксовано в коді (без env): https://www.softh-cto.com
- */
+
 export const SITE_URL = "https://www.softh-cto.com";
 
 export const SITE = {
@@ -29,7 +26,6 @@ export const OPENING_HOURS = [
   { days: ["Saturday"], opens: "10:00", closes: "18:00" },
 ] as const;
 
-/** Послуги для структурованих даних (збігаються з секцією «Послуги») */
 export const SEO_SERVICES = [
   "Консультація та діагностика",
   "Терапевтична та ендодонтична стоматологія",
