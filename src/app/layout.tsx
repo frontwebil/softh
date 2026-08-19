@@ -5,6 +5,7 @@ import "./reset.css";
 import { ToasterClient } from "@/Providers/ToasterClient";
 import { StructuredData } from "@/Components/Seo/StructuredData";
 import { SITE, SITE_URL } from "@/lib/siteConfig";
+import Script from "next/script";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -110,6 +111,26 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <StructuredData />
         <ToasterClient />
+  <Script
+    id="plerdy-script"
+    strategy="afterInteractive"
+  >
+    {`
+      (function(w,d){
+        if(w.__plerdyCode)return;
+        w.__plerdyCode=1;
+        w._protocol=w.location.protocol=="https:"?"https://":"http://";
+        w._site_hash_code="d4b5762f44068db240d37d39337ee79c";
+        w._suid=80246;
+        var s=d.createElement("script");
+        s.async=true;
+        s.referrerPolicy="strict-origin-when-cross-origin";
+        s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+        d.head.appendChild(s);
+      })(window,document);
+    `}
+  </Script>
+        
         {children}
       </body>
     </html>
